@@ -1,23 +1,56 @@
 \documentclass[12pt,a4paper]{article}
 
-% 1. Carichiamo la configurazione da un file esterno
 \input{preamble}
 
 \begin{document}
 	
-	% 2. Frontespizio (opzionale)
-	\maketitle
+	\begin{titlepage}
+		
+		\begin{tikzpicture}[remember picture, overlay]
+			\fill[grey] (current page.north west) 
+			-- ++(0,-6cm)                
+			-- ++(\paperwidth,-1.5cm)    
+			-- (current page.north east) 
+			-- cycle;
+		\end{tikzpicture}
+		
+		\begin{flushright}
+			\includegraphics[width=0.45\textwidth]{images/logo-unifi.png} 
+		\end{flushright}
+		
+		\vfill 
+		
+		\begin{center}
+			{\huge \textbf{Title}} \\[0.5cm]
+			{\Large \textit{Subtitle}} \\[1.5cm]
+			
+			\rule{\linewidth}{0.2pt} \\[1.5cm] 
+			
+			{\large \textbf{Developed by:}} \\[0.5cm]
+			{\large Lorenzo Bellina \quad Alberto Cardini \quad Carolina Cecchi} \\[1cm]
+			
+			{\large \today}
+		\end{center}
+		
+		\vfill 
+		
+		\begin{center}
+			{\small University of Florence -- DINFO  \\ Academic Year 2025/2026}
+		\end{center}
+	\end{titlepage}
+	
+	\newpage
 	\tableofcontents
 	\newpage
 	
-	% 3. Includiamo le varie sezioni
 	\input{sections/introduction}
+	\input{sections/system_design}        
 	\input{sections/implementation_details}
-	\input{sections/system_design}
 	\input{sections/testing}
 	\input{sections/docs}
 	
-	% 4. Bibliografia
+	\newpage 
+	
 	\bibliographystyle{plain}
 	\bibliography{references}
 	
