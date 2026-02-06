@@ -1,4 +1,4 @@
-package com.swe.prof_or_flop.model;
+package com.swe.EduMeter.model;
 
 public class User {
 

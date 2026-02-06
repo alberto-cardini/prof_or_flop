@@ -1,4 +1,4 @@
-# Prof or Flop?
+# EduMeter
 
 The project is built using [`jax-rs`](https://jakarta.ee/specifications/restful-ws/). As such, it bundles the code into a [WAR](https://en.wikipedia.org/wiki/WAR_(file_format)) file.
 
