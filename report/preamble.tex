@@ -27,6 +27,14 @@
 \usepackage{float}
 \definecolor{grey}{RGB}{245, 245, 245} 
 
+\usepackage{tabularx}
+\usepackage{enumitem}
+\newlist{tabitem}{itemize}{1}
+\setlist[tabitem]{label=\textbullet, leftmargin=*, nosep}
+\newlist{tabenum}{enumerate}{1}
+\setlist[tabenum]{label=\arabic*., leftmargin=*, nosep}
+
+
 \title{EduMeter technical report}
 
 \author{Lorenzo Bellina \and Alberto Cardini \and Carolina Cecchi}

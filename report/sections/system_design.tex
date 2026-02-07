@@ -52,7 +52,6 @@ The presented diagram covers the entirety of actions that the different kinds of
 
 \begin{table}[h]
 	\centering
-	\label{tab:review_fields}
 	\begin{tabular}{lll}
 		\toprule
 		
@@ -70,6 +69,141 @@ The presented diagram covers the entirety of actions that the different kinds of
 		\bottomrule
 	\end{tabular}
 \end{table}
+
+
+\begin{tabularx}{\textwidth}{lX}
+	\toprule
+	\textbf{UC \#1} & \textbf{Browse Review} \\ \midrule
+	Level & User Goal \\
+	Description & An unauthenticated user browses the collection of reviews to gather information. \\
+	Actors & Guest (Student) \\
+	Pre-conditions & None \\
+	Steps & 
+	\begin{tabenum}
+		\item The guest accesses the EduMeter platform.
+		\item The system displays a list of reviews.
+		\item The guest scrolls through and reads them.
+	\end{tabenum} \\
+	Post-conditions & The user has viewed the desired information. \\
+	Alternative Steps & 
+	\begin{tabitem}
+		\item[2a.] \textbf{Extension (Apply Filter):} The guest wants to narrow down the search results:
+		\begin{itemize}
+			\item The guest selects specific criteria (e.g., Course or Instructor).
+			\item The system updates the view to show only matching reviews.
+		\end{itemize}
+	\end{tabitem} \\ 
+	\bottomrule
+\end{tabularx}
+
+\vspace{2em}
+
+\begin{tabularx}{\textwidth}{lX}
+	\toprule
+	\textbf{UC \#2} & \textbf{Student Login} \\ \midrule
+	Level & Function \\
+	Description & The user is authenticated via their institutional email. \\
+	Actors & Student \\
+	Pre-conditions & The user possesses a valid institutional email address. \\
+	Steps & 
+	\begin{tabenum}
+		\item The user provides their institutional email address.
+		\item The system sends a verification code to the provided address.
+		\item The user enters the code.
+		\item The system verifies if the entered code matches the one sent.
+		\item The system retrieves the existing unique ID (or generates a new one for first-time access).
+	\end{tabenum} \\
+	Post-conditions & The student is authenticated and identified by their unique ID. \\
+	Alternative Steps & 
+	\begin{tabitem}
+		\item[4a.] If the code does not match, the system signals an error and does not grant access.
+	\end{tabitem} \\ \bottomrule
+\end{tabularx}
+
+\vspace{2em}
+
+\begin{tabularx}{\textwidth}{lX}
+	\toprule
+	\textbf{UC \#3} & \textbf{Submit Review} \\ \midrule
+	Level & User Goal \\
+	Description & An authenticated user submits a review for a completed course. \\
+	Actors & Student \\
+	Pre-conditions & The user must be authenticated. \\
+	Steps & 
+	\begin{tabenum}
+		\item The user selects the option to create a review.
+		\item The system displays the review form.
+		\item The user fills the review fields (school, degree, course, professor) by selecting existing option from a provided list.
+		\item The user add a rating and a comment.
+		\item The user confirms the submission.
+		\item The system stores the review and makes it publicly visible.
+	\end{tabenum} \\
+	Post-conditions & The review is stored in the database.\\
+	Alternative Steps & 
+	\begin{tabitem}
+		\item[3a.] If the information that the student need is not available in the list: 
+		\begin{itemize}
+			\item The user manually inputs the missing information in the fields.
+			\item Upon submission, the system saves the review but is not published publicly until an Admin approves it (UC \#5: Validate Review Data).
+		\end{itemize} 
+		
+	\end{tabitem} \\ \bottomrule
+\end{tabularx}
+
+\vspace{2em}
+
+
+\begin{tabularx}{\textwidth}{lX}
+	\toprule
+	\textbf{UC \#4} & \textbf{Up-Vote} \\ \midrule
+	Level & User Goal \\
+	Description & An authenticated Student expresses approval for a specific review. \\
+	Actors & Student \\
+	Pre-conditions & The student must be authenticated. \\
+	Steps & 
+	\begin{tabenum}
+		\item The student selects the upvote option on a specific review.
+		\item The system checks if the student has already voted for this review.
+		\item The system increments the vote counter for the review.
+	\end{tabenum} \\
+	Post-conditions & The vote is stored in the database, updating the review's total score. \\
+	Alternative Steps & 
+	\begin{tabitem}
+		\item[3a.] If the student has already voted, the system does not register the new vote.
+	\end{tabitem} \\ \bottomrule
+\end{tabularx}
+
+\vspace{2em}
+
+\begin{tabularx}{\textwidth}{lX}
+	\toprule
+	\textbf{UC \#n} & \textbf{Validate Review Data} \\ \midrule
+	Level & User Goal \\
+	Description & The admin verifies the submitted information. \\
+	Actors & Admin \\
+	Pre-conditions & The admin is logged in. \\
+	Steps & 
+	\begin{tabenum}
+		\item The admin selects a review from the queue of pending validations.
+		\item The admin links the following fields to existing database entries:
+		\begin{tabitem}
+			\item School
+			\item Degree
+			\item Course
+			\item Professor
+		\end{tabitem}
+		\item The admin validates and publishes the review.
+	\end{tabenum} \\
+	Post-conditions & The review is validated and visible to the public. \\
+	Alternative Steps & 
+	\begin{tabitem}
+		\item[2a.] The admin corrects a field by creating a new entry in the database.
+		\item[2b.] If the fields cannot be linked or verified, the admin discards the review.
+	\end{tabitem} \\ \bottomrule
+\end{tabularx}
+
+\vspace{2em}
+
 
 \subsection{Mock-ups}
 
